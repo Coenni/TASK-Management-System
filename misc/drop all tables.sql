@@ -1,4 +1,4 @@
-use tms1024;
+use tms;
 drop table hibernate_sequence;
 drop table invites;
 drop table passcode;

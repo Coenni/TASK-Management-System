@@ -4,7 +4,7 @@ import { NewTask } from 'src/app/framework/models/NewTask';
 import { TaskService } from 'src/app/framework/services/task.service';
 import { DatePipe } from '@angular/common';
 import { GlobalService } from 'src/app/framework/services/global.service';
-import { User } from 'src/app/framework/models/user';
+import { User } from 'src/app/framework/models/User';
 import { UserService } from 'src/app/framework/services/user.service';
 import { MessageService } from 'primeng/api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';

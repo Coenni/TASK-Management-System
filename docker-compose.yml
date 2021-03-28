@@ -1,0 +1,38 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    container_name: tms-mysql
+    ports:
+      - '3308:3306'
+    environment:
+      MYSQL_DATABASE: tms
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: tmsuser
+      MYSQL_PASSWORD: tmspassword
+
+  backend:
+    image: 'tms-backend:latest'
+    build:
+      context: ./backend
+    container_name: backend
+    depends_on:
+      - mysql
+    environment:
+      - >-
+        SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/tms?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=tmsuser
+      - SPRING_DATASOURCE_PASSWORD=tmspassword
+    ports:
+      - '8001:8001'
+
+  frontend:
+    image: 'tms-frontend:latest'
+    build:
+      context: ./frontend
+    container_name: frontend
+    depends_on: 
+      - backend
+    ports:
+      - '4200:80'

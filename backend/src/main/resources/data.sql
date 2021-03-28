@@ -1,3 +1,19 @@
-INSERT INTO roles(name) VALUES('ROLE_USER');
-INSERT INTO roles(name) VALUES('ROLE_PUBLIC');
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+INSERT INTO roles (name)
+SELECT * FROM (SELECT 'ROLE_USER') AS tmp
+WHERE NOT EXISTS (
+        SELECT name FROM roles WHERE name = 'ROLE_USER'
+    ) LIMIT 1;
+
+
+INSERT INTO roles (name)
+SELECT * FROM (SELECT 'ROLE_PUBLIC') AS tmp
+WHERE NOT EXISTS (
+        SELECT name FROM roles WHERE name = 'ROLE_PUBLIC'
+    ) LIMIT 1;
+
+INSERT INTO roles (name)
+SELECT * FROM (SELECT 'ROLE_ADMIN') AS tmp
+WHERE NOT EXISTS (
+        SELECT name FROM roles WHERE name = 'ROLE_ADMIN'
+    ) LIMIT 1;

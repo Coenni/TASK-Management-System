@@ -39,7 +39,7 @@ public class MailService {
     String subject = "Invitation to Join Program: "+ prgm.getId()+" | "+prgm.getName();
     try {
       sendMail(email, text, subject);
-    } catch (MessagingException e) {
+    } catch (Exception e) { // TODO MessagingException
       return ""; //no-use
     }
     return passcode;

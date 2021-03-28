@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { GlobalService } from 'src/app/framework/services/global.service';
 import { ProgramService } from '../../framework/services/program.service';
 import { NewProgram } from '../../framework/models/NewProgram';
-import { User } from 'src/app/framework/models/user';
+import { User } from 'src/app/framework/models/User';
 import { UserService } from 'src/app/framework/services/user.service';
 import { MessageService } from 'primeng/api';
 
